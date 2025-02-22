@@ -1,0 +1,53 @@
+---
+interface Event {
+  date: string;
+  month: string;
+  title: string;
+  description: string;
+  link: string;
+  highlighted: boolean;
+}
+
+const events: Event[] = [
+  { date: "1st", month: "MARCH", title: "New Event", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", link: "#", highlighted: false },
+  { date: "1st", month: "MARCH", title: "New Event", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", link: "#", highlighted: false },
+  { date: "1st", month: "MARCH", title: "New Event", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", link: "#", highlighted: false },
+  { date: "1st", month: "MARCH", title: "New Event", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", link: "#", highlighted: false },
+];
+---
+
+<div class="fixed inset-0 flex items-center justify-center bg-black/95">
+  <div class="bg-black py-16 px-8 rounded-lg">
+    
+    <div class="bg-stone-900/50 p-8 rounded-lg">
+      <h2 class="text-white text-4xl font-mono mb-8 text-left">UPCOMING EVENTS</h2>
+      <div class="grid grid-cols-2 gap-8 place-items-center">
+        {events.map((event) => (
+          <div class="bg-neutral-900 px-6 py-8 rounded-lg border border-neutral-800 relative overflow-hidden group hover:border-emerald-500 transition-colors duration-300 w-[500px]">
+            <div class="flex items-start gap-6">
+              <div class="flex flex-col items-center">
+                <span class={`${event.highlighted ? 'text-emerald-500' : 'text-emerald-500/80'} text-2xl font-mono`}>
+                  {event.date}<sup class="text-sm">st</sup>
+                </span>
+                <span class="text-neutral-400 text-sm font-mono uppercase">{event.month}</span>
+              </div>
+              
+              <div class="flex-1">
+                <h3 class="text-white font-mono mb-2">{event.title}</h3>
+                <p class="text-neutral-400 text-sm mb-3">{event.description}</p>
+                <a 
+                  href={event.link} 
+                  class="text-emerald-500 text-sm hover:text-emerald-400 transition-colors duration-300"
+                >
+                  [ register here ]
+                </a>
+              </div>
+            </div>
+
+            <div class="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
