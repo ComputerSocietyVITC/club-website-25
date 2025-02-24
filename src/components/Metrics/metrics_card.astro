@@ -1,0 +1,109 @@
+---
+type NumberKey = "50+" | "300+" | "1000+" | "60+";
+
+const asciiNumbers: Record<NumberKey, string[]> = {
+  "60+": [
+"   _____ ____      ",
+" / ___// __ \\  __", 
+" / __ \\/ / / /_/ /_",
+"/ /_/ / /_/ /_  __/",
+"\\____/\\____/ /_/   ",
+  ],
+  "1000+": [
+"   _______  ____  ____      ",
+" <  / __ \\/ __ \\/ __ \\  __", 
+"  / / / / / / / / / / /_/ /_",
+" / / /_/ / /_/ / /_/ /_  __/",
+"/_/\\____/\\____/\\____/ /_/   ",
+  ],
+  "300+": [
+"   _____ ____  ____      ",
+" |__  // __ \\/ __ \\  __",
+"   /_ </ / / / / / /_/ /_",
+" ___/ / /_/ / /_/ /_  __/",
+"/____/\\____/\\____/ /_/   ",
+  ],
+  "50+": [
+ "   __________      ",
+ "  / ____/ __ \\  __ ",
+ " /___ \\/ / / /_/ /_",
+ "____/ / /_/ /_  __/",
+ "/_____/\\____/ /_/   ",
+  ],
+};
+
+interface Metric {
+  numbers: NumberKey[];
+  label: string;
+}
+
+const metrics: Metric[] = [
+  { numbers: ["60+"], label: "Projects" },
+  { numbers: ["300+"], label: "Attendees" },
+  { numbers: ["50+"], label: "Schools" },
+  { numbers: ["1000+"], label: "Applications" }
+];
+---
+
+<div class="w-full -mt-16">
+    <div class="mx-auto max-w-6xl bg-[rgba(31,31,31,0.4)] border border-[rgba(255,255,255,0.15)] rounded-xl px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+        {metrics.map((metric) => (
+            <div class="flex flex-col items-center justify-center">
+            <div class="flex gap-1 justify-center w-full">
+                {metric.numbers.map((num) => (
+                <div class="number-display text-center">
+                    {asciiNumbers[num].map((line) => (
+                    <div class="ascii-line">{line}</div>
+                    ))}
+                </div>
+                ))}
+            </div>
+            <p class="text-white text-lg mt-6 font-jetbrains tracking-wide">
+                {metric.label}
+            </p>
+            </div>
+        ))}
+        </div>
+    </div>
+</div>
+
+<style>
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/files/jetbrains-mono-latin-400-normal.woff2') format('woff2');
+  }
+
+  .font-jetbrains {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .number-display {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgb(74 222 128);
+    display: inline-block;
+    transform: skew(-12deg);
+    background: linear-gradient(to bottom, rgb(141, 207, 34), rgb(19, 139, 3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .ascii-line {
+    white-space: pre;
+    height: 1em;
+    line-height: 1;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+</style>
