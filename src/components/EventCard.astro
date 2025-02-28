@@ -1,0 +1,44 @@
+---
+import { ChevronsRightIcon, ExternalLinkIcon } from "astro-feather";
+import "../styles/global.css";
+const { title, description, date , href , link_text} = Astro.props;
+
+function getDaySuffix(day : number) {
+  if (day > 3 && day < 21) return "th";
+  switch (day % 10) {
+    case 1: return "st";
+    case 2: return "nd";
+    case 3: return "rd";
+    default: return "th";
+  }
+}
+
+const eventDate = new Date(date); 
+const day = eventDate.getUTCDate();
+const month = eventDate.toLocaleString("default", { month: "long" });
+const suffix = getDaySuffix(day);
+---
+
+<div class="flex items-center space-x-5 rounded-md bg-transparent border border-[#363636] backdrop-blur-md p-5 font-primary w-full max-w-xl cursor-pointer group">
+
+    <div class="flex flex-col p-4 group-hover:text-[#2be12e]">
+        <div class="flex items-start font-bold">
+            <span class="text-2xl">{day}</span>
+            <span>{suffix}</span>
+        </div>
+        <span class="uppercase">{month}</span>
+    </div>
+
+    <div class="flex flex-col space-y-2 border-l-2 border-[#363636] p-3 items-start">
+        <h1 class="text-xl group-hover:text-[#2be12e]">{title}</h1>
+        <div class="flex space-x-1">
+          <ChevronsRightIcon customClasses="size-4" />
+          <span class="text-xs text-start">{description}</span>
+        </div>
+        <div class="flex space-x-1 hover:text-[#2be12e] text-xs">
+          <ExternalLinkIcon customClasses="size-4" />
+          <a target="_blank" class="underline" href={href}>{link_text}</a>
+        </div>
+    </div>
+
+</div>

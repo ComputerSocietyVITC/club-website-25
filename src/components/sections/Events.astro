@@ -1,10 +1,55 @@
 ---
 import "../../styles/global.css";
+import EventCard from "../EventCard.astro";
+
+const events = [
+  {
+    title: "Computer Vision",
+    description: "Join us for an exciting tech conference with industry leaders.",
+    date: "2025-06-01T00:00:00Z",
+    href: "about:blank",
+    link_text: "Learn More"
+  },
+  {
+    title: "Hackathon 2025",
+    description: "A weekend hackathon with great prizes and opportunities to network.",
+    date: "2025-07-22T00:00:00Z",
+    href: "about:blank",
+    link_text: "Register Now"
+  },
+  {
+    title: "Web Development Bootcamp",
+    description: "A hands-on bootcamp for aspiring web developers.",
+    date: "2025-03-05T00:00:00Z",
+    href: "about:blank",
+    link_text: "Sign Up"
+  },
+  {
+    title: "AI Summit 2025",
+    description: "Explore the future of artificial intelligence with experts in the field.",
+    date: "2025-03-18T00:00:00Z",
+    href: "about:blank",
+    link_text: "Join Us"
+  }
+];
+
 ---
 <section
-  class="relative w-full h-screen flex items-center justify-center text-center text-white bg-cover bg-center"
+  class="relative w-full h-screen flex items-center justify-center text-center text-white bg-cover bg-center my-5"
 >
-  <div class="max-w-lg z-10">
-    <h1> [Events Section] </h1>
+  <img class="opacity-90 absolute top-0 -left-10 md:-left-40 -z-10 overflow-hidden" src="/keyboard_effect.png" alt="effect">
+  <div class="w-full mx-1 md:w-2/3 z-10 bg-black/30 flex flex-col items-start font-bold rounded-md border border-[#363636] p-8 backdrop-blur-md">
+    <h1 class="text-3xl"> UPCOMING EVENTS </h1>
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 w-full place-content-center">
+      {events.map((event) => (
+        <EventCard
+          title={event.title}
+          description={event.description}
+          date={event.date}
+          href={event.href}
+          link_text={event.link_text}
+        />
+      ))}
+    </div>
   </div>
 </section>
