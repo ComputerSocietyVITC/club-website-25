@@ -4,14 +4,14 @@ type NumberKey = "50+" | "300+" | "1000+" | "60+";
 const asciiNumbers: Record<NumberKey, string[]> = {
   "60+": [
 "   _____ ____      ",
-" / ___// __ \\  __", 
+" / ___// __ \\  __",
 " / __ \\/ / / /_/ /_",
 "/ /_/ / /_/ /_  __/",
 "\\____/\\____/ /_/   ",
   ],
   "1000+": [
 "   _______  ____  ____      ",
-" <  / __ \\/ __ \\/ __ \\  __", 
+" <  / __ \\/ __ \\/ __ \\  __",
 "  / / / / / / / / / / /_/ /_",
 " / / /_/ / /_/ / /_/ /_  __/",
 "/_/\\____/\\____/\\____/ /_/   ",
@@ -59,7 +59,7 @@ const metrics: Metric[] = [
                 </div>
                 ))}
             </div>
-            <p class="text-white text-lg mt-6 font-jetbrains tracking-wide">
+            <p class="text-white text-lg mt-6 tracking-wide">
                 {metric.label}
             </p>
             </div>
@@ -69,17 +69,7 @@ const metrics: Metric[] = [
 </div>
 
 <style>
-  @font-face {
-    font-family: 'JetBrains Mono';
-    src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@4.5.11/files/jetbrains-mono-latin-400-normal.woff2') format('woff2');
-  }
-
-  .font-jetbrains {
-    font-family: 'JetBrains Mono', monospace;
-  }
-
   .number-display {
-    font-family: 'JetBrains Mono', monospace;
     font-size: 1rem;
     font-weight: 700;
     line-height: 1;
